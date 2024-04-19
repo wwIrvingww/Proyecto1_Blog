@@ -4,12 +4,13 @@ import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
 import Settings from "./Pages/Settings/Settings";
 import Write from "./Pages/Write/Write";
+import Test from "./Pages/Test/Test";
 
 function App() {
   return (
   <>
-    <TopBar />
-    <Write />
+  <TopBar/>
+  <Home/>
   </>
   );
 }

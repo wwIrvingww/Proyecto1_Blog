@@ -1,5 +1,11 @@
+* {
+    margin: 0;
+}
+
 .write{
-    padding-top: 50px; 
+    margin: 0%;
+    padding-top: 50px;
+
 }
 
 .writeImg {
