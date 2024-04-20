@@ -4,7 +4,7 @@ import './write.css'
 export default function Write() {
     return(
         <>
-        <TopBar/>
+        
         <div className='write'>
             <img 
             className="writeImg"

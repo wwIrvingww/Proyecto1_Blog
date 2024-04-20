@@ -6,7 +6,7 @@ import TopBar from '../../components/TopBar/TopBar';
 
 export default function Home() {
     return(
-    <>  <TopBar/>
+    <>  
         <Header/>
         <div className="home">
             <Posts />

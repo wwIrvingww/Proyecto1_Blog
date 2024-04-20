@@ -5,7 +5,7 @@ import TopBar from '../../components/TopBar/TopBar';
 export default function Settings (){
     return(
         <>
-        <TopBar/>
+        
             <div className="settings">
                 <div className="settingsWrapper">
                     <div className="settingsTitle">

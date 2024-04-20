@@ -10,6 +10,8 @@ import Write from '../../Pages/Write/Write';
 
 function Router({ ruta }) {
     switch (ruta) {
+        case "/":
+            return <Home/>
         case "/home":
             return <Home/>
         case "/login":
