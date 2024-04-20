@@ -33,6 +33,7 @@ export default function Posts() {
   }
 
     return(
+      
         <div className="posts">
           {postlist.map((ytryt) => (
            <Post image={ytryt.image}

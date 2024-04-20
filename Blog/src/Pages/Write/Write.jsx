@@ -1,7 +1,10 @@
+import TopBar from '../../components/TopBar/TopBar'
 import './write.css'
 
 export default function Write() {
     return(
+        <>
+        <TopBar/>
         <div className='write'>
             <img 
             className="writeImg"
@@ -27,5 +30,6 @@ export default function Write() {
                 </button>
             </form>
         </div>
+        </>
     )
 }
