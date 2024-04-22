@@ -23,7 +23,7 @@ function App() {
     <div className='sitio-web'>
       <div className='paginas'>
           <TopBar onRouteChange={handleRouteChange} />
-          <Router ruta={rutaActual}></Router>
+          <Router ruta={rutaActual} navigate={handleRouteChange}></Router>
       </div>
     </div>
   )

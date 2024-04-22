@@ -2,7 +2,7 @@ import './posts.css'
 import Post from '../Post/Post'
 import { useEffect, useState } from 'react'
 
-export default function Posts() {
+export default function Posts({navigate}) {
   const [postlist, setpostlist] = useState([])
    
   useEffect(()=>{

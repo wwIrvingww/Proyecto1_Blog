@@ -14,25 +14,32 @@ export default function Write() {
         setDescription(event.target.value);
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         // Aquí puedes utilizar el valor de 'title' y 'description' como desees, como enviarlos a una API, almacenarlos en una base de datos, etc.
         console.log('Título:', title);
         console.log('Descripción:', description);
-        const image = 'https://images.unsplash.com/photo-1595433707802-6b2626ef1c91?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+        const image64 = 'https://images.unsplash.com/photo-1595433707802-6b2626ef1c91?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
 
-        const blog = {title, description, image};
+        const blog = {title, content: description, image64};
 
         console.log(blog);
 
-        fetch('http://127.0.0.1:3001/blogs', {
-            method: 'POST',
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify(blog)
-        }).then(() => {
-            console.log('new blog created');
-
-        })
+        try{
+            const response = await fetch('http://127.0.0.1:3001/blogs', {
+                method: 'POST',
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(blog)
+            })
+            const response_JSON = await response.json()
+            if (response_JSON.success){
+                alert('POSTED SUCCESFULLY')
+                return
+            }
+        } catch (error){
+            console.error('error in posted', error)
+            alert('POSTED NOT SUCCESFULLY')
+        }
 
     }
 

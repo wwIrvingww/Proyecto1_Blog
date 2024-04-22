@@ -3,19 +3,14 @@ import SinglePost from '../../components/SinglePost/SinglePost';
 import TopBar from '../../components/TopBar/TopBar';
 import './single.css';
 
-export default function Single() {
-    // Obtiene la URL actual
-    const currentUrl = window.location.href;
-    // Utiliza una expresión regular para buscar el postId en la URL
-    const postIdMatch = currentUrl.match(/\/single\/(\d+)/);
-    // Si se encuentra una coincidencia, toma el postId, de lo contrario, es null
-    const postId = 4
+export default function Single({postId}) {
+    console.log('postid:', postId)
 
     return(  
         <>
            
             <div className="single">         
-                <SinglePost postId={postId} /> {/* Paso del postId como prop */}
+                <SinglePost postId={postId} /> 
                 <Sidebar />   
             </div>
         </> 

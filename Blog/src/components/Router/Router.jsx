@@ -6,9 +6,11 @@ import Single from '../../Pages/Single/Single';
 import Settings from '../../Pages/Settings/Settings'
 import Write from '../../Pages/Write/Write';
 
-
-
-function Router({ ruta }) {
+function Router({ ruta, navigate }) {
+    if( /^\/single\/\d+$/.test(ruta)){
+            const [_ , postId] = ruta.match(/\/single\/(\d+)/)
+            return <Single postId={postId} />
+    }
     switch (ruta) {
         case "/":
             return <Home/>
@@ -18,8 +20,7 @@ function Router({ ruta }) {
             return <Login/>
         case "/register":
             return <Register/>
-        case "/single":
-            return <Single />
+        
         case "/settings":
             return <Settings />
         case "/write":
