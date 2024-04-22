@@ -19,23 +19,19 @@ export default function Write() {
         // Aquí puedes utilizar el valor de 'title' y 'description' como desees, como enviarlos a una API, almacenarlos en una base de datos, etc.
         console.log('Título:', title);
         console.log('Descripción:', description);
+        const image = 'https://images.unsplash.com/photo-1595433707802-6b2626ef1c91?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
 
-        const data = {}
-        data["title"] = title
-        data["description"] = description
-        data["image"] = "default"
+        const blog = {title, description, image};
 
-        const url = "http://127.0.0.1:3001/blogs"
-        fetch (url, {
-            method: "POST",
-            body: JSON.stringify(data),
-            headers: {"Content-type": "application/json"},
-        }).then((r)=>{
-            return r.json().then((data) => ({
-                status: r.status,
-                body: data,
-            }))
-        
+        console.log(blog);
+
+        fetch('http://127.0.0.1:3001/blogs', {
+            method: 'POST',
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(blog)
+        }).then(() => {
+            console.log('new blog created');
+
         })
 
     }
