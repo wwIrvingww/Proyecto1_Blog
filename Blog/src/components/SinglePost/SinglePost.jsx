@@ -2,8 +2,8 @@ import './singlePost.css'
 import { useEffect, useState } from 'react'
 
 export default function SinglePost({ postId }) {
+    //CREAR POST EN SINGLE
     const [post, setPost] = useState(null)
-    
     useEffect(() => {
         const fetchPost = async () => {
             try {
@@ -22,6 +22,26 @@ export default function SinglePost({ postId }) {
         return <h1>Loading...</h1>
     }
 
+    //PARA ELIMINAR POST 
+    const handleItemClick = (route) => {
+        onRouteChange(route)
+    }
+    const deletePost = async (id, onRouteChange) => {
+        let response = await fetch(`http://127.0.0.1:3001/blogs/${postId}`,
+        {
+            method: 'DELETE',
+        }
+    );
+    if (response.status === 200){
+        console.log('Post deleted successfully');
+        
+    } else {
+        return
+        console.log('error to delete post')
+    }
+    }
+
+
     return(   
         <div className="singlePost">
             <div className="singlePostWrapper">
@@ -33,7 +53,7 @@ export default function SinglePost({ postId }) {
                     {post[0].title} 
                     <div className="singlePostEdit">
                         <i className="singlePostIcon fa-regular fa-pen-to-square"></i>
-                        <i className="singlePostIcon fa-regular fa-trash-can"></i>
+                        <i className="singlePostIcon fa-regular fa-trash-can" onClick={() => deletePost(postId) }></i> 
                     </div>
                 </h1>
                 <div className="singlePostInfo">
