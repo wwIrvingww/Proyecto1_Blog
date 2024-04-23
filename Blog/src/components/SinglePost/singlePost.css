@@ -5,6 +5,7 @@
 .singlePostWrapper{
     padding: 20px;
     padding-right: 0;
+    width: 70vw; /* Agregamos un ancho fijo */
 }
 
 .singlePostImg{
@@ -58,4 +59,45 @@
     margin-left: 20px;
     font-size: 30px;
     font-weight: 600px;
+}
+
+.writeInput{
+    font-size: 30px;
+    border: none;
+    padding: 20px;
+    width: 70vw;
+}
+
+.writeInput:focus{
+    outline: none;
+}
+
+.writeText{
+    font-size: 20px;
+    height: 100vh;
+}
+
+.writeSubmit{
+    position: relative;
+    top: 450px;
+    left: 110px;
+    color: white;
+    background-color: teal;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+}
+.writeForm{
+    position: relative;
+
+}
+
+.writeFormGroup{
+    margin-left: 0;
+    display: flex;
+    align-items: center;
+
 }
