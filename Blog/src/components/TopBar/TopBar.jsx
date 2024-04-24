@@ -1,10 +1,23 @@
 import './topBar.css'
+import useLogin from '../../Hooks/useLogin';
 
 export default function TopBar({ onRouteChange }) {
+  const { isLoggedin } = useLogin()
+
 
   const handleItemClick = (route) => {
     onRouteChange(route);
   };
+  
+  console.log('TESTING', isLoggedin)
+  if(!isLoggedin) {
+    
+    return (
+      <h1>
+        You're not logged
+      </h1>
+    )
+  }
 
   return (
     <div className='top'>
