@@ -33,7 +33,8 @@ export default function Write() {
             })
             const response_JSON = await response.json()
             if (response_JSON.success){
-                alert('POSTED SUCCESFULLY')
+                console.log('post created')
+                window.location.href = '/home'; // Redirigir a '/home'
                 return
             }
         } catch (error){
@@ -82,3 +83,5 @@ export default function Write() {
         </>
     )
 }
+
+
