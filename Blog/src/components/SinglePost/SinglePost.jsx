@@ -7,7 +7,7 @@ export default function SinglePost({ postId }) {
     const [editedTitle, setEditedTitle] = useState('');
     const [editedContent, setEditedContent] = useState('');
     const [editedImage64, setEditedImage64] = useState('');
-    const [isLoading, setIsLoading] = useState(true); // Estado para controlar la animación de carga
+    const [isLoading, setIsLoading] = useState(true); 
 
     useEffect(() => {
         const fetchPost = async () => {
@@ -16,7 +16,7 @@ export default function SinglePost({ postId }) {
                 const postData = await response.json();
                 console.log('Post Data:', postData); 
                 setPost(postData);
-                setIsLoading(false); // Cambiar el estado a false cuando se haya cargado el post
+                setIsLoading(false); 
             } catch (error) {
                 console.error('Error fetching post:', error);
             }
@@ -38,7 +38,7 @@ export default function SinglePost({ postId }) {
             });
             if (response.status === 200) {
                 console.log('Post deleted successfully');
-                window.location.href = '/home'; // Redirigir a '/home'
+                window.location.href = '/home'; 
             } else {
                 console.log('Error deleting post');
             }
@@ -48,7 +48,7 @@ export default function SinglePost({ postId }) {
     };
 
     const editPost = async (e) => {
-        e.preventDefault(); // Prevenir el comportamiento predeterminado del formulario
+        e.preventDefault(); 
         try {
             console.log('Data to send:', {
                 title: editedTitle,
@@ -114,7 +114,8 @@ export default function SinglePost({ postId }) {
                                 <textarea
                                     placeholder='URL de la imagen'
                                     value={editedImage64} 
-                                    type="text"                                  
+                                    type="text"
+                                    style={{ width: '100%', height: '5vh' }}                                
                                     onChange={(e) => setEditedImage64(e.target.value)}
                                     className="writeText">
                                 </textarea>                         
