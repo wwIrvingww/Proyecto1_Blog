@@ -5,6 +5,7 @@ import './write.css';
 export default function Write() {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
+    const [editedImage64, setEditedImage64] = useState('');
 
     const handleTitleChange = (event) => {
         setTitle(event.target.value);
@@ -14,14 +15,18 @@ export default function Write() {
         setDescription(event.target.value);
     }
 
+    const handleImage64Change = (event) => {
+        setEditedImage64(event.target.value);
+    }
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         // Aquí puedes utilizar el valor de 'title' y 'description' como desees, como enviarlos a una API, almacenarlos en una base de datos, etc.
         console.log('Título:', title);
         console.log('Descripción:', description);
-        const image64 = 'https://images.unsplash.com/photo-1595433707802-6b2626ef1c91?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+        
 
-        const blog = {title, content: description, image64};
+        const blog = {title, content: description, image64: editedImage64};
 
         console.log(blog);
 
@@ -47,11 +52,6 @@ export default function Write() {
     return (
         <>
             <div className='write'>
-                <img
-                    className="writeImg"
-                    src="https://lasdeliciasdevivir.net/wp-content/uploads/2019/02/Brownies-Red-Velvet-Receta-Las-Delicias-Del-Buen-Vivir.jpg"
-                    alt="" />
-
                 <form className='writeForm' onSubmit={handleSubmit}>
                     <div className="writeFormGroup">
                         <label htmlFor="fileInput">
@@ -75,6 +75,16 @@ export default function Write() {
                             onChange={handleDescriptionChange}>
                         </textarea>
                     </div>
+                    <div className="writeFormGroup">
+                        <textarea
+                            placeholder='URL de la imagen'
+                            value={editedImage64} 
+                            type="text"
+                            style={{ width: '100%', height: '5vh' }}                                
+                            onChange={(e) => setEditedImage64(e.target.value)}
+                            className="writeText">
+                        </textarea>                         
+                    </div> 
                     <button className="writeSubmit" type="submit">
                         Publish
                     </button>
