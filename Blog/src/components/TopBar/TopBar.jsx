@@ -7,10 +7,9 @@ export default function TopBar({ onRouteChange }) {
   const handleItemClick = (route) => {
     // Si el usuario presiona logout
     if (route === '/login') {
-      // Realiza el logout borrando los datos del LocalStorage
+   
       logout();
     }
-    // Cambia la ruta independientemente del botón presionado
     onRouteChange(route);
   };
 
@@ -33,7 +32,7 @@ export default function TopBar({ onRouteChange }) {
           <li className='topListItem' onClick={() => handleItemClick('/write')}>
             WRITE
           </li>
-          <li className='topListItem' onClick={() => handleItemClick('/playlists')}>
+          <li className='topListItem' onClick={() => handleItemClick('/playlist')}>
             PLAYLIST'S
           </li>
           <li className='topListItem' onClick={() => handleItemClick('/settings')}>

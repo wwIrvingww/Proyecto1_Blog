@@ -4,6 +4,7 @@ import Register from '../../Pages/Register/Register';
 import Single from '../../Pages/Single/Single';
 import Settings from '../../Pages/Settings/Settings';
 import Write from '../../Pages/Write/Write';
+import Playlist from '../../Pages/Playlist/Playlist';
 import { useState, useEffect } from 'react';
 
 function Router({ ruta, navigate }) {
@@ -28,12 +29,14 @@ function Router({ ruta, navigate }) {
       return <Home navigate={navigate} />;
     case '/login':
       return <Login />;
-case '/register':
+    case '/register':
       return <Register />;
     case '/settings':
       return <Settings />;
     case '/write':
       return <Write />;
+    case '/playlist':
+      return <Playlist/>;
     default:
       return (
         <div>
