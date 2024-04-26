@@ -21,7 +21,6 @@ export default function Write() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        // Aquí puedes utilizar el valor de 'title' y 'description' como desees, como enviarlos a una API, almacenarlos en una base de datos, etc.
         console.log('Título:', title);
         console.log('Descripción:', description);
         
