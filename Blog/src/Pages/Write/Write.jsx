@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import TopBar from '../../components/TopBar/TopBar';
 import './write.css';
+import useLogin from '../../Hooks/useLogin';
+import NotAdmin from '../Settings/NotAdmin';
 
 export default function Write() {
     const [title, setTitle] = useState('');
@@ -47,6 +49,12 @@ export default function Write() {
         }
 
     }
+
+    const { isAdmin } = useLogin();
+
+    if (!isAdmin) {
+        return (<NotAdmin />);
+      }
 
     return (
         <>

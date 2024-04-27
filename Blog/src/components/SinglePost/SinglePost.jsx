@@ -1,5 +1,6 @@
 import './singlePost.css';
 import { useEffect, useState } from 'react';
+import useLogin from '../../Hooks/useLogin';
 
 export default function SinglePost({ postId }) {
     const [post, setPost] = useState(null);
@@ -8,6 +9,8 @@ export default function SinglePost({ postId }) {
     const [editedContent, setEditedContent] = useState('');
     const [editedImage64, setEditedImage64] = useState('');
     const [isLoading, setIsLoading] = useState(true); 
+    const { isAdmin } = useLogin();
+
 
     useEffect(() => {
         const fetchPost = async () => {
@@ -82,6 +85,14 @@ export default function SinglePost({ postId }) {
         return <h1>Loading...</h1>; // Mostrar animación de carga mientras se carga el post
     }
 
+    const alertOnClick = () => {
+        alert("No tienes permiso porque no eres admin");
+      };
+
+
+
+    
+
     return(   
         <div className="singlePost">
             <div className="singlePostWrapper">
@@ -126,16 +137,29 @@ export default function SinglePost({ postId }) {
                         </form>
                     </div>
                 ) : (
-                    <>
+                    <>                   
+               
                         <h1 className="singlePostTitle">
                             <img src={post[0].image64} 
                                 alt="" 
                                 className="singlePostImg"
                             />
                             {post[0].title} 
+                            
                             <div className="singlePostEdit">
+                                {isAdmin ? (
+                                <>
                                 <i className="singlePostIcon fa-regular fa-pen-to-square" onClick={() => setIsEditing(true)}></i>
                                 <i className="singlePostIcon fa-regular fa-trash-can" onClick={() => deletePost(postId) }></i> 
+                                </>
+                                ) : (
+                                <>
+                                <i className="singlePostIcon fa-regular fa-pen-to-square" onClick={() => alertOnClick()} ></i>
+                                <i className="singlePostIcon fa-regular fa-trash-can"onClick={() => alertOnClick()} ></i> 
+
+                                </>
+
+                                )}
                             </div>
                         </h1>
                         <div className="singlePostInfo">
