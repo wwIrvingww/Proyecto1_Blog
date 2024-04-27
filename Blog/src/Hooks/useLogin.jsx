@@ -9,6 +9,11 @@ const LoginProvider = ({ children }) => {
     return storedLoggedIn ? JSON.parse(storedLoggedIn) : false;
   });
 
+  const [isAdmin, setIsAdmin] = useState( ()=> {
+    const storedAdmin = localStorage.getItem('isAdmin');
+    return storedAdmin ? JSON.parse(storedAdmin) : false;
+  });
+
   const login = async (user, password) => {
     console.log(`User: ${user}, Password: ${password}`); 
     try {
@@ -21,9 +26,21 @@ const LoginProvider = ({ children }) => {
       });
       console.log('Login response:', response); 
 
+    const data = await response.json(); // Convertir la respuesta a JSON
+    console.log('Login response:', data); // Imprimir la respuesta
+
+    if (data[0].id == 1) { 
+      console.log('You are an admin!');
+      setIsAdmin(true); // Establecer el estado de administrador en verdadero
+      localStorage.setItem('isAdmin', true); // Almacenar el estado de administrador en LocalStorage 
+    } else {
+      setIsAdmin(false); // Establecer el estado de administrador en falso
+      localStorage.setItem('isAdmin', false); // Almacenar el estado de administrador en LocalStorage
+    }
+
+
       if (response.ok) {
         setIsLoggedin(true);
-        // Almacena el estado de inicio de sesión en LocalStorage
         localStorage.setItem('isLoggedIn', true);
       } else {
         throw new Error('Failed to login');
@@ -37,17 +54,22 @@ const LoginProvider = ({ children }) => {
     setIsLoggedin(false);
     // Borra el estado de inicio de sesión del LocalStorage al cerrar sesión
     localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('isAdmin');
   };
 
   return (
-    <LoginContext.Provider value={{ isLoggedin, login, logout }}>
+    <LoginContext.Provider value={{ isLoggedin, isAdmin, login, logout }}>
       {children}
     </LoginContext.Provider>
   );
 };
 
 const useLogin = () => {
-  return useContext(LoginContext);
+  const context = useContext(LoginContext);
+  if (!context) {
+    throw new Error('useLogin must be used within a LoginProvider');
+  }
+  return context;
 };
 
 export default useLogin;

@@ -3,7 +3,7 @@ import useLogin from '../../Hooks/useLogin'
 import { useState } from 'react';
 
 export default function Login(){
-    const { login } = useLogin();
+    const {login } = useLogin();
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
 
@@ -16,7 +16,7 @@ export default function Login(){
         <div className='login'>
             <span className="loginTitle">Login</span>
             <form className='loginForm' onSubmit={handleLogin}>
-                <label>Email</label>
+                <label>User</label>
                 <input 
                     type="text" 
                     className="loginInput" 
@@ -34,7 +34,6 @@ export default function Login(){
                 />
                 <button className='loginButton' type="submit">Login</button>
             </form>
-            <button className='loginRegisterButton'>Register</button>
         </div>
     )
 }

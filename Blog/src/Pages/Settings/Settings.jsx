@@ -1,8 +1,19 @@
 import './settings.css';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import TopBar from '../../components/TopBar/TopBar';
+import useLogin from '../../Hooks/useLogin';
 
 export default function Settings (){
+    const { isLoggedin, logout } = useLogin();
+    const { isAdmin } = useLogin();
+
+    if (!isLoggedin) {
+        return <h1>You're not logged </h1>;
+      }
+    if (!isAdmin) {
+        return <h1>You're  not Admin</h1>;
+      }
+
     return(
         <>
         
@@ -10,7 +21,7 @@ export default function Settings (){
                 <div className="settingsWrapper">
                     <div className="settingsTitle">
                         <span className="settingsUpdateTitle">Update Your Account</span>
-                        <span className="settingsDeleteTitle">Delete Account</span>
+                      
                     </div>
                     <form className="settingsForm">
                         <label>Profile Picture</label>
@@ -26,8 +37,6 @@ export default function Settings (){
                         </div>
                         <label>Username</label>
                         <input type="text" placeholder="Irvs" />
-                        <label>Email</label>
-                        <input type="email" placeholder="mor22781@uvg.edu.gt" />
                         <label>Password</label>
                         <input type="password"/>
                         <button className="settingsSubmit">Update</button>
