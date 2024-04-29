@@ -1,5 +1,6 @@
+import React, { useEffect, useState, Suspense, lazy } from 'react'
+import PropTypes from 'prop-types'
 import './singlePost.css'
-import { useEffect, useState, Suspense, lazy } from 'react'
 import useLogin from '../../Hooks/useLogin'
 
 const Skeleton = lazy(() => import('./Skeleton'))
@@ -99,81 +100,85 @@ export default function SinglePost ({ postId }) {
       <div className="singlePostWrapper">
         {isEditing
           ? (
-          <div className='write' >
-            <form className='writeForm' onSubmit={(e) => editPost(e)}>
-              <div className="writeFormGroup">
-                <label htmlFor="fileInput">
-                  <i className="writeIcon fa-solid fa-plus"></i>
-                </label>
-                <input type="file" id="fileInput" style={{ display: 'none' }} />
-                <input
-                  type="text"
-                  placeholder='New Title'
-                  autoFocus={true}
-                  value={editedTitle}
-                  onChange={(e) => setEditedTitle(e.target.value)}
-                  className="writeInput" />
-              </div>
-              <div className="writeFormGroup">
-                <textarea
-                  placeholder='New Content'
-                  value={editedContent}
-                  type="text"
-                  onChange={(e) => setEditedContent(e.target.value)}
-                  className="writeInput writeText">
-                </textarea>
-              </div>
-              <div className="writeFormGroup">
-                <textarea
-                  placeholder='URL de la imagen'
-                  value={editedImage64}
-                  type="text"
-                  style={{ width: '100%', height: '5vh' }}
-                  onChange={(e) => setEditedImage64(e.target.value)}
-                  className="writeText">
-               </textarea>
-              </div>
-              <button type="submit" className="writeSubmit">
-                Save
-              </button>
-            </form>
-          </div>
+            <div className='write' >
+              <form className='writeForm' onSubmit={(e) => editPost(e)}>
+                <div className="writeFormGroup">
+                  <label htmlFor="fileInput">
+                    <i className="writeIcon fa-solid fa-plus"></i>
+                  </label>
+                  <input type="file" id="fileInput" style={{ display: 'none' }} />
+                  <input
+                    type="text"
+                    placeholder='New Title'
+                    autoFocus={true}
+                    value={editedTitle}
+                    onChange={(e) => setEditedTitle(e.target.value)}
+                    className="writeInput" />
+                </div>
+                <div className="writeFormGroup">
+                  <textarea
+                    placeholder='New Content'
+                    value={editedContent}
+                    type="text"
+                    onChange={(e) => setEditedContent(e.target.value)}
+                    className="writeInput writeText">
+                  </textarea>
+                </div>
+                <div className="writeFormGroup">
+                  <textarea
+                    placeholder='URL de la imagen'
+                    value={editedImage64}
+                    type="text"
+                    style={{ width: '100%', height: '5vh' }}
+                    onChange={(e) => setEditedImage64(e.target.value)}
+                    className="writeText">
+                  </textarea>
+                </div>
+                <button type="submit" className="writeSubmit">
+                  Save
+                </button>
+              </form>
+            </div>
             )
           : (
-          <>
-            <h1 className="singlePostTitle">
-              <img src={post[0].image64}
+            <>
+              <h1 className="singlePostTitle">
+                <img src={post[0].image64}
                   alt=""
                   className="singlePostImg"
-              />
-              {post[0].title}
+                />
+                {post[0].title}
 
-              <div className="singlePostEdit">
-                {isAdmin
-                  ? (
-                    <>
+                <div className="singlePostEdit">
+                  {isAdmin
+                    ? (
+                      <>
                         <i className="singlePostIcon fa-regular fa-pen-to-square" onClick={() => setIsEditing(true)}></i>
                         <i className="singlePostIcon fa-regular fa-trash-can" onClick={() => deletePost(postId)}></i>
-                    </>
-                    )
-                  : (
-                    <>
+                      </>
+                      )
+                    : (
+                      <>
                         <i className="singlePostIcon fa-regular fa-pen-to-square" onClick={() => alertOnClick()} ></i>
                         <i className="singlePostIcon fa-regular fa-trash-can" onClick={() => alertOnClick()} ></i>
 
-                    </>
+                      </>
 
-                    )}
-            </div>
-          </h1>
-          <div className="singlePostInfo">
-            <span className='singlePostAuthor'>Autor: <b>IRVS</b> </span>
-            <span className='singlePostDate'>Date: {post[0].date} </span>
-          </div>
-          <p className='singlePostDesc'>{post[0].content}</p>
-        </>
+                      )}
+                </div>
+              </h1>
+              <div className="singlePostInfo">
+                <span className='singlePostAuthor'>Autor: <b>IRVS</b> </span>
+                <span className='singlePostDate'>Date: {post[0].date} </span>
+              </div>
+              <p className='singlePostDesc'>{post[0].content}</p>
+            </>
             )}
       </div>
     </div>
   )
+}
+
+SinglePost.propTypes = {
+  postId: PropTypes.string.isRequired
 }

@@ -1,10 +1,10 @@
+import React, { useEffect, useState, Suspense } from 'react'
 import './posts.css'
-import { useEffect, useState, Suspense, lazy } from 'react'
-import Skeleton from './Skeleton' // Importa tu componente de esqueleto
+import Skeleton from './Skeleton'
+import PropTypes from 'prop-types'
+import Post from '../Post/Post' // Importa el componente Post directamente aquí
 
-const Post = lazy(() => import('../Post/Post'))
-
-export default function Posts ({ navigate }) {
+const Posts = ({ navigate }) => {
   const [postlist, setpostlist] = useState([])
 
   useEffect(() => {
@@ -32,7 +32,7 @@ export default function Posts ({ navigate }) {
   }
 
   return (
-    <Suspense fallback={<Skeleton />}> {/* Mueve el Suspense alrededor del bloque completo de Posts */}
+    <Suspense fallback={<Skeleton />}>
       <div className="posts">
         {postlist.map((post) => (
           <Post
@@ -49,3 +49,9 @@ export default function Posts ({ navigate }) {
     </Suspense>
   )
 }
+
+Posts.propTypes = {
+  navigate: PropTypes.func.isRequired
+}
+
+export default Posts

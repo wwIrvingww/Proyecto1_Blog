@@ -1,4 +1,5 @@
-import { createContext, useContext, useState, useEffect } from 'react'
+import React, { createContext, useContext, useState } from 'react'
+import PropTypes from 'prop-types'
 
 const LoginContext = createContext({})
 
@@ -8,6 +9,10 @@ const LoginProvider = ({ children }) => {
     const storedLoggedIn = localStorage.getItem('isLoggedIn')
     return storedLoggedIn ? JSON.parse(storedLoggedIn) : false
   })
+
+  LoginProvider.propTypes = {
+    children: PropTypes.node.isRequired
+  }
 
   const [isAdmin, setIsAdmin] = useState(() => {
     const storedAdmin = localStorage.getItem('isAdmin')
@@ -29,7 +34,7 @@ const LoginProvider = ({ children }) => {
       const data = await response.json() // Convertir la respuesta a JSON
       console.log('Login response:', data) // Imprimir la respuesta
 
-      if (data[0].id == 1) {
+      if (data[0].id === 1) {
         console.log('You are an admin!')
         setIsAdmin(true) // Establecer el estado de administrador en verdadero
         localStorage.setItem('isAdmin', true) // Almacenar el estado de administrador en LocalStorage

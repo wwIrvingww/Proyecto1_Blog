@@ -1,20 +1,18 @@
+import React from 'react'
 import './settings.css'
 import Sidebar from '../../components/Sidebar/Sidebar'
-import TopBar from '../../components/TopBar/TopBar'
 import useLogin from '../../Hooks/useLogin'
 import NotAdmin from './NotAdmin'
 
 export default function Settings () {
-  const { isLoggedin, logout } = useLogin()
+  const { isLoggedin } = useLogin()
   const { isAdmin } = useLogin()
-
   if (!isLoggedin) {
-    return <h1>You're not logged </h1>
+    return <h1>You&apos;re not logged</h1>
   }
   if (!isAdmin) {
     return (<NotAdmin/>)
   }
-
   return (
         <>
 

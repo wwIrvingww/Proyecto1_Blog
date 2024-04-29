@@ -1,4 +1,6 @@
+import React from 'react'
 import './post.css'
+import PropTypes from 'prop-types'
 
 export default function Post ({ image, title, description, date, id, navigate }) {
   const handleClick = () => {
@@ -16,4 +18,13 @@ export default function Post ({ image, title, description, date, id, navigate })
       <p className='postDesc'>{description}</p>
     </div>
   )
+}
+
+Post.propTypes = {
+  image: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  navigate: PropTypes.func.isRequired
 }

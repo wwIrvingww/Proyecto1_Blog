@@ -1,3 +1,5 @@
+import React from 'react'
+import PropTypes from 'prop-types'
 import './topBar.css'
 import useLogin from '../../Hooks/useLogin'
 
@@ -13,7 +15,7 @@ export default function TopBar ({ onRouteChange }) {
   }
 
   if (!isLoggedin) {
-    return <h1>You're not logged</h1>
+    return <h1>You are not logged</h1>
   }
 
   return (
@@ -32,7 +34,7 @@ export default function TopBar ({ onRouteChange }) {
             WRITE
           </li>
           <li className='topListItem' onClick={() => handleItemClick('/playlist')}>
-            PLAYLIST'S
+            PLAYLIST
           </li>
           <li className='topListItem' onClick={() => handleItemClick('/settings')}>
             SETTINGS
@@ -48,4 +50,8 @@ export default function TopBar ({ onRouteChange }) {
       </div>
     </div>
   )
+}
+
+TopBar.propTypes = {
+  onRouteChange: PropTypes.func.isRequired
 }
