@@ -1,9 +1,9 @@
 import './post.css'
 
-export default function Post({ image, title, description, date, id, navigate }) {
+export default function Post ({ image, title, description, date, id, navigate }) {
   const handleClick = () => {
-    navigate(`/single/${id}`);
-  };
+    navigate(`/single/${id}`)
+  }
 
   return (
     <div className='post' onClick={handleClick}>
@@ -15,5 +15,5 @@ export default function Post({ image, title, description, date, id, navigate }) 
       </div>
       <p className='postDesc'>{description}</p>
     </div>
-  );
+  )
 }

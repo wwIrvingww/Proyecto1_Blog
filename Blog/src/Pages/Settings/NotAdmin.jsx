@@ -1,6 +1,5 @@
-import './NotAdmin.css';
-import React from 'react';
-
+import './NotAdmin.css'
+import React from 'react'
 
 const NotAdmin = () => {
   return (
@@ -13,7 +12,7 @@ const NotAdmin = () => {
       <div className="cube"></div>
       <div className="cube"></div>
     </div>
-  );
-};
+  )
+}
 
-export default NotAdmin;
+export default NotAdmin

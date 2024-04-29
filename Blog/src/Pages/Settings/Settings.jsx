@@ -1,40 +1,40 @@
-import './settings.css';
-import Sidebar from '../../components/Sidebar/Sidebar';
-import TopBar from '../../components/TopBar/TopBar';
-import useLogin from '../../Hooks/useLogin';
-import NotAdmin from './NotAdmin';
+import './settings.css'
+import Sidebar from '../../components/Sidebar/Sidebar'
+import TopBar from '../../components/TopBar/TopBar'
+import useLogin from '../../Hooks/useLogin'
+import NotAdmin from './NotAdmin'
 
-export default function Settings (){
-    const { isLoggedin, logout } = useLogin();
-    const { isAdmin } = useLogin();
+export default function Settings () {
+  const { isLoggedin, logout } = useLogin()
+  const { isAdmin } = useLogin()
 
-    if (!isLoggedin) {
-        return <h1>You're not logged </h1>;
-      }
-    if (!isAdmin){
-        return (<NotAdmin/>)
-    }
+  if (!isLoggedin) {
+    return <h1>You're not logged </h1>
+  }
+  if (!isAdmin) {
+    return (<NotAdmin/>)
+  }
 
-    return(
+  return (
         <>
-        
+
             <div className="settings">
                 <div className="settingsWrapper">
                     <div className="settingsTitle">
                         <span className="settingsUpdateTitle">Update Your Account</span>
-                      
+
                     </div>
                     <form className="settingsForm">
                         <label>Profile Picture</label>
                         <div className="settingsPP">
-                            <img 
-                            src="https://i.pinimg.com/originals/a8/96/db/a896db882a6273fb83100ae86e97a8ca.jpg" 
+                            <img
+                            src="https://i.pinimg.com/originals/a8/96/db/a896db882a6273fb83100ae86e97a8ca.jpg"
                             alt=""
                             />
                             <label htmlFor="fileInput">
                             <i className="settingsPPIcon fa-regular fa-user"></i>
                             </label>
-                            <input type="file" id="fileInput" style={{display: "none"}} />
+                            <input type="file" id="fileInput" style={{ display: 'none' }} />
                         </div>
                         <label>Username</label>
                         <input type="text" placeholder="Irvs" />
@@ -47,5 +47,5 @@ export default function Settings (){
                 <Sidebar/>
             </div>
         </>
-    )
+  )
 }

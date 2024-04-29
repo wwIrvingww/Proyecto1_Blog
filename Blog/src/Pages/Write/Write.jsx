@@ -1,63 +1,60 @@
-import React, { useState, Suspense, lazy } from 'react';
-import './write.css';
-import useLogin from '../../Hooks/useLogin';
-import NotAdmin from '../Settings/NotAdmin';
+import React, { useState, Suspense, lazy } from 'react'
+import './write.css'
+import useLogin from '../../Hooks/useLogin'
+import NotAdmin from '../Settings/NotAdmin'
 
-const Skeleton = lazy(() => import('./Skeleton'));
+const Skeleton = lazy(() => import('./Skeleton'))
 
-export default function Write() {
-    const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
-    const [editedImage64, setEditedImage64] = useState('');
+export default function Write () {
+  const [title, setTitle] = useState('')
+  const [description, setDescription] = useState('')
+  const [editedImage64, setEditedImage64] = useState('')
 
-    const handleTitleChange = (event) => {
-        setTitle(event.target.value);
-    }
+  const handleTitleChange = (event) => {
+    setTitle(event.target.value)
+  }
 
-    const handleDescriptionChange = (event) => {
-        setDescription(event.target.value);
-    }
+  const handleDescriptionChange = (event) => {
+    setDescription(event.target.value)
+  }
 
-    const handleImage64Change = (event) => {
-        setEditedImage64(event.target.value);
-    }
+  const handleImage64Change = (event) => {
+    setEditedImage64(event.target.value)
+  }
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        console.log('Título:', title);
-        console.log('Descripción:', description);
-        
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    console.log('Título:', title)
+    console.log('Descripción:', description)
 
-        const blog = {title, content: description, image64: editedImage64};
+    const blog = { title, content: description, image64: editedImage64 }
 
-        console.log(blog);
+    console.log(blog)
 
-        try{
-            const response = await fetch('http://127.0.0.1:3001/blogs', {
-                method: 'POST',
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify(blog)
-            })
-            const response_JSON = await response.json()
-            if (response_JSON.success){
-                console.log('post created')
-                window.location.href = '/home'; // Redirigir a '/home'
-                return
-            }
-        } catch (error){
-            console.error('error in posted', error)
-            alert('POSTED NOT SUCCESFULLY')
-        }
-
-    }
-
-    const { isAdmin } = useLogin();
-
-    if (!isAdmin) {
-        return (<NotAdmin />);
+    try {
+      const response = await fetch('http://127.0.0.1:3001/blogs', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(blog)
+      })
+      const response_JSON = await response.json()
+      if (response_JSON.success) {
+        console.log('post created')
+        window.location.href = '/home' // Redirigir a '/home'
       }
+    } catch (error) {
+      console.error('error in posted', error)
+      alert('POSTED NOT SUCCESFULLY')
+    }
+  }
 
-    return (
+  const { isAdmin } = useLogin()
+
+  if (!isAdmin) {
+    return (<NotAdmin />)
+  }
+
+  return (
         <>
             <div className='write'>
                 <Suspense fallback={<Skeleton />}>
@@ -66,7 +63,7 @@ export default function Write() {
                             <label htmlFor="fileInput">
                                 <i className="writeIcon fa-solid fa-plus"></i>
                             </label>
-                            <input type="file" id="fileInput" style={{ display: "none" }} />
+                            <input type="file" id="fileInput" style={{ display: 'none' }} />
                             <input
                                 type="text"
                                 placeholder="Title"
@@ -87,13 +84,13 @@ export default function Write() {
                         <div className="writeFormGroup">
                             <textarea
                                 placeholder='URL de la imagen'
-                                value={editedImage64} 
+                                value={editedImage64}
                                 type="text"
-                                style={{ width: '100%', height: '5vh' }}                                
+                                style={{ width: '100%', height: '5vh' }}
                                 onChange={(e) => setEditedImage64(e.target.value)}
                                 className="writeText">
-                            </textarea>                         
-                        </div> 
+                            </textarea>
+                        </div>
                         <button className="writeSubmit" type="submit">
                             Publish
                         </button>
@@ -101,5 +98,5 @@ export default function Write() {
                 </Suspense>
             </div>
         </>
-    )
+  )
 }

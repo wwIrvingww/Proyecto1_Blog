@@ -1,5 +1,5 @@
-import React from 'react';
-import './skeleton.css';
+import React from 'react'
+import './skeleton.css'
 
 const Skeleton = () => {
   return (
@@ -34,7 +34,7 @@ const Skeleton = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Skeleton;
+export default Skeleton

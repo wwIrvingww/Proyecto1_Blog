@@ -1,110 +1,111 @@
-import './singlePost.css';
-import { useEffect, useState, Suspense, lazy } from 'react';
-import useLogin from '../../Hooks/useLogin';
+import './singlePost.css'
+import { useEffect, useState, Suspense, lazy } from 'react'
+import useLogin from '../../Hooks/useLogin'
 
-const Skeleton = lazy(() => import('./Skeleton'));
+const Skeleton = lazy(() => import('./Skeleton'))
 
-export default function SinglePost({ postId }) {
-  const [post, setPost] = useState(null);
-  const [isEditing, setIsEditing] = useState(false);
-  const [editedTitle, setEditedTitle] = useState('');
-  const [editedContent, setEditedContent] = useState('');
-  const [editedImage64, setEditedImage64] = useState('');
-  const [isLoading, setIsLoading] = useState(true);
-  const { isAdmin } = useLogin();
+export default function SinglePost ({ postId }) {
+  const [post, setPost] = useState(null)
+  const [isEditing, setIsEditing] = useState(false)
+  const [editedTitle, setEditedTitle] = useState('')
+  const [editedContent, setEditedContent] = useState('')
+  const [editedImage64, setEditedImage64] = useState('')
+  const [isLoading, setIsLoading] = useState(true)
+  const { isAdmin } = useLogin()
 
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const response = await fetch(`http://127.0.0.1:3001/blogs/${postId}`);
-        const postData = await response.json();
-        console.log('Post Data:', postData);
-        setPost(postData);
-        setIsLoading(false);
+        const response = await fetch(`http://127.0.0.1:3001/blogs/${postId}`)
+        const postData = await response.json()
+        console.log('Post Data:', postData)
+        setPost(postData)
+        setIsLoading(false)
       } catch (error) {
-        console.error('Error fetching post:', error);
+        console.error('Error fetching post:', error)
       }
-    };
-    fetchPost();
-  }, [postId]);
+    }
+    fetchPost()
+  }, [postId])
 
   useEffect(() => {
     if (post && post.length > 0) {
-      setEditedTitle(post[0].title);
-      setEditedContent(post[0].content);
+      setEditedTitle(post[0].title)
+      setEditedContent(post[0].content)
     }
-  }, [post]);
+  }, [post])
 
   const deletePost = async () => {
     try {
       const response = await fetch(`http://127.0.0.1:3001/blogs/${postId}`, {
-        method: 'DELETE',
-      });
+        method: 'DELETE'
+      })
       if (response.status === 200) {
-        console.log('Post deleted successfully');
-        window.location.href = '/home';
+        console.log('Post deleted successfully')
+        window.location.href = '/home'
       } else {
-        console.log('Error deleting post');
+        console.log('Error deleting post')
       }
     } catch (error) {
-      console.error('Error deleting post:', error);
+      console.error('Error deleting post:', error)
     }
-  };
+  }
 
   const editPost = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     try {
       console.log('Data to send:', {
         title: editedTitle,
         content: editedContent,
-        image64: editedImage64,
-      });
+        image64: editedImage64
+      })
 
       const response = await fetch(`http://127.0.0.1:3001/blogs/${postId}`, {
         method: 'PUT',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           title: editedTitle,
           content: editedContent,
-          image64: editedImage64,
-        }),
-      });
+          image64: editedImage64
+        })
+      })
 
-      const updatedPostData = await response.json();
-      console.log('Updated Post Data:', updatedPostData);
-      setPost(updatedPostData);
-      setIsEditing(false);
-      window.location.reload(); // Recargar la página
+      const updatedPostData = await response.json()
+      console.log('Updated Post Data:', updatedPostData)
+      setPost(updatedPostData)
+      setIsEditing(false)
+      window.location.reload() // Recargar la página
     } catch (error) {
-      console.error('Error updating post:', error);
+      console.error('Error updating post:', error)
     }
-  };
+  }
 
   if (isLoading) {
     return (
       <Suspense fallback={<Skeleton />}>
         <h1>Loading...</h1>
       </Suspense>
-    );
+    )
   }
 
   const alertOnClick = () => {
-    alert("No tienes permiso porque no eres admin");
-  };
+    alert('No tienes permiso porque no eres admin')
+  }
 
   return (
     <div className="singlePost">
       <div className="singlePostWrapper">
-        {isEditing? (
+        {isEditing
+          ? (
           <div className='write' >
             <form className='writeForm' onSubmit={(e) => editPost(e)}>
               <div className="writeFormGroup">
                 <label htmlFor="fileInput">
                   <i className="writeIcon fa-solid fa-plus"></i>
                 </label>
-                <input type="file" id="fileInput" style={{ display: "none" }} />
+                <input type="file" id="fileInput" style={{ display: 'none' }} />
                 <input
                   type="text"
                   placeholder='New Title'
@@ -137,7 +138,8 @@ export default function SinglePost({ postId }) {
               </button>
             </form>
           </div>
-        ) : (
+            )
+          : (
           <>
             <h1 className="singlePostTitle">
               <img src={post[0].image64}
@@ -147,19 +149,21 @@ export default function SinglePost({ postId }) {
               {post[0].title}
 
               <div className="singlePostEdit">
-                {isAdmin ? (
+                {isAdmin
+                  ? (
                     <>
                         <i className="singlePostIcon fa-regular fa-pen-to-square" onClick={() => setIsEditing(true)}></i>
                         <i className="singlePostIcon fa-regular fa-trash-can" onClick={() => deletePost(postId)}></i>
                     </>
-                ) : (
+                    )
+                  : (
                     <>
                         <i className="singlePostIcon fa-regular fa-pen-to-square" onClick={() => alertOnClick()} ></i>
                         <i className="singlePostIcon fa-regular fa-trash-can" onClick={() => alertOnClick()} ></i>
 
                     </>
 
-                )}
+                    )}
             </div>
           </h1>
           <div className="singlePostInfo">
@@ -168,8 +172,8 @@ export default function SinglePost({ postId }) {
           </div>
           <p className='singlePostDesc'>{post[0].content}</p>
         </>
-        )}
+            )}
       </div>
     </div>
-  );
+  )
 }

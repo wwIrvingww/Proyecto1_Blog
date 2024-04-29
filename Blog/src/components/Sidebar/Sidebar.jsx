@@ -1,16 +1,16 @@
 import './sidebar.css'
 
-export default function Sidebar() {
-    return(
+export default function Sidebar () {
+  return (
         <div className="sidebar">
           <div className="sidebarItem">
             <span className="sidebarTitle">ABOUT ME</span>
-            <img 
+            <img
             src = "https://i.pinimg.com/originals/a8/96/db/a896db882a6273fb83100ae86e97a8ca.jpg"
             alt = ""
             />
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
               Molestias consequatur impedit animi repudiandae, assumenda culpa.
             </p>
           </div>
@@ -34,5 +34,5 @@ export default function Sidebar() {
           </div>
           </div>
         </div>
-    )
+  )
 }

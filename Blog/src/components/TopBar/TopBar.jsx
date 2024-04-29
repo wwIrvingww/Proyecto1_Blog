@@ -1,28 +1,27 @@
-import './topBar.css';
-import useLogin from '../../Hooks/useLogin';
+import './topBar.css'
+import useLogin from '../../Hooks/useLogin'
 
-export default function TopBar({ onRouteChange }) {
-  const { isLoggedin, logout } = useLogin();
+export default function TopBar ({ onRouteChange }) {
+  const { isLoggedin, logout } = useLogin()
 
   const handleItemClick = (route) => {
     // Si el usuario presiona logout
     if (route === '/login') {
-   
-      logout();
+      logout()
     }
-    onRouteChange(route);
-  };
+    onRouteChange(route)
+  }
 
   if (!isLoggedin) {
-    return <h1>You're not logged</h1>;
+    return <h1>You're not logged</h1>
   }
 
   return (
     <div className='top'>
       <div className='topLeft'>
-        <a href='https://instagram.com' target='_blank' className='topIcon fa-brands fa-instagram'></a>
-        <a href='https://twitter.com' target='_blank' className='topIcon fa-brands fa-x-twitter'></a>
-        <a href='https://github.com' target='_blank' className='topIcon fa-brands fa-github'></a>
+        <a href='https://instagram.com' target='_blank' className='topIcon fa-brands fa-instagram' rel="noreferrer"></a>
+        <a href='https://twitter.com' target='_blank' className='topIcon fa-brands fa-x-twitter' rel="noreferrer"></a>
+        <a href='https://github.com' target='_blank' className='topIcon fa-brands fa-github' rel="noreferrer"></a>
       </div>
       <div className='topCenter'>
         <ul className='topList'>
@@ -48,5 +47,5 @@ export default function TopBar({ onRouteChange }) {
         <i className='topSearchIcon fa-solid fa-magnifying-glass'></i>
       </div>
     </div>
-  );
+  )
 }

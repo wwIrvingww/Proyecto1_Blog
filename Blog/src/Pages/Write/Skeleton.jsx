@@ -1,5 +1,5 @@
-import React from 'react';
-import './skeleton.css';
+import React from 'react'
+import './skeleton.css'
 
 const Skeleton = () => {
   return (
@@ -9,7 +9,7 @@ const Skeleton = () => {
           <label htmlFor="fileInput">
             <i className="writeIcon fa-solid fa-plus"></i>
           </label>
-          <input type="file" id="fileInput" style={{ display: "none" }} />
+          <input type="file" id="fileInput" style={{ display: 'none' }} />
           <input
             type="text"
             placeholder="Title"
@@ -30,19 +30,19 @@ const Skeleton = () => {
         <div className="writeFormGroup">
           <textarea
             placeholder='URL de la imagen'
-            value="" 
+            value=""
             type="text"
-            style={{ width: '100%', height: '5vh' }}                                
+            style={{ width: '100%', height: '5vh' }}
             disabled={true}
             className="writeText">
-          </textarea>                         
-        </div> 
+          </textarea>
+        </div>
         <button className="writeSubmit" type="submit" disabled={true}>
           Publish
         </button>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default Skeleton;
+export default Skeleton

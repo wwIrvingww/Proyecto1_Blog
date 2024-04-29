@@ -1,7 +1,7 @@
 import './register.css'
 
-export default function Register(){
-    return(
+export default function Register () {
+  return (
         <div className='register'>
             <span className="registerTitle">Register</span>
             <form className='registerForm'>
@@ -15,5 +15,5 @@ export default function Register(){
             </form>
             <button className='registerLoginButton'>Login</button>
         </div>
-    )
+  )
 }
