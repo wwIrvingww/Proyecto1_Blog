@@ -1,15 +1,19 @@
 import './home.css';
 import Header from "../../components/Header/Header";
-import Posts from '../../components/Posts/Posts';
+import React, { Suspense, lazy } from 'react';
 import Sidebar from '../../components/Sidebar/Sidebar';
-import TopBar from '../../components/TopBar/TopBar';
+import Skeleton from './Skeleton';
+
+const Posts = lazy(() => import('../../components/Posts/Posts'));
 
 export default function Home({navigate}) {
     return(
     <>  
         <Header/>
         <div className="home">
-            <Posts navigate={navigate} />
+            <Suspense fallback={<Skeleton />}>
+                <Posts navigate={navigate} />
+            </Suspense>
             <Sidebar />
         </div>
      </>

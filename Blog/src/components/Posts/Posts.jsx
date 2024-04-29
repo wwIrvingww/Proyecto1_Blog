@@ -1,6 +1,8 @@
 import './posts.css'
-import Post from '../Post/Post'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense, lazy } from 'react'
+import Skeleton from './Skeleton'; // Importa tu componente de esqueleto
+
+const Post = lazy(() => import('../Post/Post'));
 
 export default function Posts({ navigate }) {
   const [postlist, setpostlist] = useState([]);
@@ -26,22 +28,24 @@ export default function Posts({ navigate }) {
   }, []);
 
   if (postlist.length === 0) {
-    return <h1>loading</h1>;
+    return <Skeleton />; // Muestra el esqueleto mientras se cargan los datos
   }
 
   return (
-    <div className="posts">
-      {postlist.map((ytryt) => (
-        <Post
-          key={ytryt.id}
-          image={ytryt.image}
-          title={ytryt.title}
-          description={ytryt.description}
-          date={ytryt.date}
-          id={ytryt.id}
-          navigate={navigate}
-        />
-      ))}
-    </div>
+    <Suspense fallback={<Skeleton />}> {/* Mueve el Suspense alrededor del bloque completo de Posts */}
+      <div className="posts">
+        {postlist.map((post) => (
+          <Post
+            key={post.id}
+            image={post.image}
+            title={post.title}
+            description={post.description}
+            date={post.date}
+            id={post.id}
+            navigate={navigate}
+          />
+        ))}
+      </div>
+    </Suspense>
   );
 }

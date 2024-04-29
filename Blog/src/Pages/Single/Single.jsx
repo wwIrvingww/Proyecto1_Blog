@@ -1,18 +1,21 @@
-import Sidebar from '../../components/Sidebar/Sidebar';
-import SinglePost from '../../components/SinglePost/SinglePost';
-import TopBar from '../../components/TopBar/TopBar';
+import React, { Suspense, lazy } from 'react';
 import './single.css';
+import Sidebar from '../../components/Sidebar/Sidebar';
+import Skeleton from './Skeleton';
 
-export default function Single({postId}) {
-    console.log('postid:', postId)
+const SinglePost = lazy(() => import('../../components/SinglePost/SinglePost'));
 
-    return(  
+export default function Single({ postId }) {
+    console.log('postid:', postId);
+
+    return (
         <>
-           
-            <div className="single">         
-                <SinglePost postId={postId} /> 
-                <Sidebar />   
+            <div className="single">
+                <Suspense fallback={<Skeleton />}> 
+                    <SinglePost postId={postId} />
+                </Suspense>
+                <Sidebar />
             </div>
-        </> 
-    )
+        </>
+    );
 }

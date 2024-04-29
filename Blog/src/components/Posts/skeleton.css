@@ -1,0 +1,11 @@
+.skeleton {
+    background-color: #eee;
+}
+
+.skeleton-header,
+.skeleton-body {
+    height: 20px;
+    width: 100%;
+    background-color: #ddd;
+    margin-bottom: 10px;
+}

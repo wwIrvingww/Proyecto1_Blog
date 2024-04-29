@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import TopBar from '../../components/TopBar/TopBar';
+import React, { useState, Suspense, lazy } from 'react';
 import './write.css';
 import useLogin from '../../Hooks/useLogin';
 import NotAdmin from '../Settings/NotAdmin';
+
+const Skeleton = lazy(() => import('./Skeleton'));
 
 export default function Write() {
     const [title, setTitle] = useState('');
@@ -59,46 +60,46 @@ export default function Write() {
     return (
         <>
             <div className='write'>
-                <form className='writeForm' onSubmit={handleSubmit}>
-                    <div className="writeFormGroup">
-                        <label htmlFor="fileInput">
-                            <i className="writeIcon fa-solid fa-plus"></i>
-                        </label>
-                        <input type="file" id="fileInput" style={{ display: "none" }} />
-                        <input
-                            type="text"
-                            placeholder="Title"
-                            className="writeInput"
-                            autoFocus={true}
-                            value={title}
-                            onChange={handleTitleChange} />
-                    </div>
-                    <div className="writeFormGroup">
-                        <textarea
-                            placeholder="Content"
-                            type="text"
-                            className="writeInput writeText"
-                            value={description}
-                            onChange={handleDescriptionChange}>
-                        </textarea>
-                    </div>
-                    <div className="writeFormGroup">
-                        <textarea
-                            placeholder='URL de la imagen'
-                            value={editedImage64} 
-                            type="text"
-                            style={{ width: '100%', height: '5vh' }}                                
-                            onChange={(e) => setEditedImage64(e.target.value)}
-                            className="writeText">
-                        </textarea>                         
-                    </div> 
-                    <button className="writeSubmit" type="submit">
-                        Publish
-                    </button>
-                </form>
+                <Suspense fallback={<Skeleton />}>
+                    <form className='writeForm' onSubmit={handleSubmit}>
+                        <div className="writeFormGroup">
+                            <label htmlFor="fileInput">
+                                <i className="writeIcon fa-solid fa-plus"></i>
+                            </label>
+                            <input type="file" id="fileInput" style={{ display: "none" }} />
+                            <input
+                                type="text"
+                                placeholder="Title"
+                                className="writeInput"
+                                autoFocus={true}
+                                value={title}
+                                onChange={handleTitleChange} />
+                        </div>
+                        <div className="writeFormGroup">
+                            <textarea
+                                placeholder="Content"
+                                type="text"
+                                className="writeInput writeText"
+                                value={description}
+                                onChange={handleDescriptionChange}>
+                            </textarea>
+                        </div>
+                        <div className="writeFormGroup">
+                            <textarea
+                                placeholder='URL de la imagen'
+                                value={editedImage64} 
+                                type="text"
+                                style={{ width: '100%', height: '5vh' }}                                
+                                onChange={(e) => setEditedImage64(e.target.value)}
+                                className="writeText">
+                            </textarea>                         
+                        </div> 
+                        <button className="writeSubmit" type="submit">
+                            Publish
+                        </button>
+                    </form>
+                </Suspense>
             </div>
         </>
     )
 }
-
-
