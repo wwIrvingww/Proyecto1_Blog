@@ -2,15 +2,14 @@ import React, { useEffect, useState, Suspense } from 'react'
 import './posts.css'
 import Skeleton from './Skeleton'
 import PropTypes from 'prop-types'
-import Post from '../Post/Post' // Importa el componente Post directamente aquí
-
+import Post from '../Post/Post'
 const Posts = ({ navigate }) => {
   const [postlist, setpostlist] = useState([])
 
   useEffect(() => {
     const callAPI = async () => {
       console.log('Calling API...')
-      const response = await fetch('http://127.0.0.1:3001/blogs')
+      const response = await fetch('https://api-postgres.onrender.com/blogs/')
       const body = await response.json()
       console.log(body)
       const newPosts = body.map((b) => {
@@ -18,7 +17,7 @@ const Posts = ({ navigate }) => {
           image: b.image64,
           title: b.title,
           description: b.content,
-          date: b.date,
+          date: b._date,
           id: b.id
         }
       })

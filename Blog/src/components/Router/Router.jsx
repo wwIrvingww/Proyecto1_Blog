@@ -26,10 +26,11 @@ function Router ({ ruta, navigate }) {
 
   switch (ruta) {
     case '/':
-    case '/home':
-      return <Home navigate={navigate} />
+      return <Login />
     case '/login':
       return <Login />
+    case '/home':
+      return <Home navigate={navigate} />
     case '/register':
       return <Register />
     case '/settings':

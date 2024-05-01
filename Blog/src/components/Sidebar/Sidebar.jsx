@@ -7,12 +7,13 @@ export default function Sidebar () {
           <div className="sidebarItem">
             <span className="sidebarTitle">ABOUT ME</span>
             <img
-            src = "https://i.pinimg.com/originals/a8/96/db/a896db882a6273fb83100ae86e97a8ca.jpg"
+            src = "https://i.pinimg.com/736x/d9/6d/45/d96d4533ce29a81fac3fdde62c522680.jpg"
             alt = ""
             />
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-              Molestias consequatur impedit animi repudiandae, assumenda culpa.
+              Soy Irving Acosta y me gusta concinar.En el 2022 (cuando inicié la universidad) inicié a cocinar por supervivencia.
+              Al principio eran cosas sencillas, pero con el tiempo fui mejorando y ahora puedo cocinar cosas más elaboradas (según yo).
+              Me gusta cocinar porque es algo que requiere tiempo y me deja expresar mi creatividad. Además, es algo que algo puedo compartir con los demás, más allá de cocinar para mí, me gusta cuando alguien más prueba lo que hice y le gusta.
             </p>
           </div>
           <div className="sidebarItem">

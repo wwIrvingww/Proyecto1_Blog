@@ -5,7 +5,7 @@ import Router from './components/Router/Router'
 import TopBar from './components/TopBar/TopBar'
 
 function App () {
-  const [rutaActual, setRutaActual] = useState('app')
+  const [rutaActual, setRutaActual] = useState(window.location.pathname)
 
   const handleRouteChange = (route) => {
     setRutaActual(route)

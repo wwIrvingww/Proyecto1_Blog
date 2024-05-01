@@ -7,7 +7,6 @@ export default function TopBar ({ onRouteChange }) {
   const { isLoggedin, logout } = useLogin()
 
   const handleItemClick = (route) => {
-    // Si el usuario presiona logout
     if (route === '/login') {
       logout()
     }

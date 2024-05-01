@@ -17,7 +17,7 @@ export default function SinglePost ({ postId }) {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const response = await fetch(`http://127.0.0.1:3001/blogs/${postId}`)
+        const response = await fetch(`https://api-postgres.onrender.com/blogs/${postId}`)
         const postData = await response.json()
         console.log('Post Data:', postData)
         setPost(postData)
@@ -38,7 +38,7 @@ export default function SinglePost ({ postId }) {
 
   const deletePost = async () => {
     try {
-      const response = await fetch(`http://127.0.0.1:3001/blogs/${postId}`, {
+      const response = await fetch(`https://api-postgres.onrender.com/blogs/${postId}`, {
         method: 'DELETE'
       })
       if (response.status === 200) {
@@ -61,7 +61,7 @@ export default function SinglePost ({ postId }) {
         image64: editedImage64
       })
 
-      const response = await fetch(`http://127.0.0.1:3001/blogs/${postId}`, {
+      const response = await fetch(`https://api-postgres.onrender.com/blogs/${postId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -169,7 +169,7 @@ export default function SinglePost ({ postId }) {
               </h1>
               <div className="singlePostInfo">
                 <span className='singlePostAuthor'>Autor: <b>IRVS</b> </span>
-                <span className='singlePostDate'>Date: {post[0].date} </span>
+                <span className='singlePostDate'>Date: {post[0]._date} </span>
               </div>
               <p className='singlePostDesc'>{post[0].content}</p>
             </>

@@ -28,7 +28,7 @@ export default function Write () {
     console.log(blog)
 
     try {
-      const response = await fetch('http://127.0.0.1:3001/blogs', {
+      const response = await fetch('https://api-postgres.onrender.com/blogs', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(blog)
@@ -36,7 +36,7 @@ export default function Write () {
       const responseJson = await response.json()
       if (responseJson.success) {
         console.log('post created')
-        window.location.href = '/home' // Redirigir a '/home'
+        window.location.href = '/home'
       }
     } catch (error) {
       console.error('error in posted', error)
