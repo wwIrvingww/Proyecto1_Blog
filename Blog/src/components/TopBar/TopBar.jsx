@@ -14,7 +14,7 @@ export default function TopBar ({ onRouteChange }) {
   }
 
   if (!isLoggedin) {
-    return <h1>You are not logged</h1>
+    return 
   }
 
   return (

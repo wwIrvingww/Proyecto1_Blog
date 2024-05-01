@@ -71,6 +71,7 @@ export default function Write () {
             <div className="writeFormGroup">
               <textarea
                 placeholder="Content"
+                style={{ height: '60vh' }}
                 type="text"
                 className="writeInput writeText"
                 value={description}
@@ -82,7 +83,7 @@ export default function Write () {
                 placeholder='URL de la imagen'
                 value={editedImage64}
                 type="text"
-                style={{ width: '100%', height: '5vh' }}
+                style={{ width: '80%', height: '5vh' }}
                 onChange={e => setEditedImage64(e.target.value)}
                 className="writeText">
               </textarea>

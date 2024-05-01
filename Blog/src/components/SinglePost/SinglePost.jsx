@@ -77,7 +77,7 @@ export default function SinglePost ({ postId }) {
       console.log('Updated Post Data:', updatedPostData)
       setPost(updatedPostData)
       setIsEditing(false)
-      window.location.reload() // Recargar la página
+      window.location.reload()
     } catch (error) {
       console.error('Error updating post:', error)
     }
@@ -86,13 +86,13 @@ export default function SinglePost ({ postId }) {
   if (isLoading) {
     return (
       <Suspense fallback={<Skeleton />}>
-        <h1>Loading...</h1>
+        <Skeleton />
       </Suspense>
     )
   }
 
   const alertOnClick = () => {
-    alert('No tienes permiso porque no eres admin')
+    alert('Only admin can do this action')
   }
 
   return (
@@ -118,6 +118,7 @@ export default function SinglePost ({ postId }) {
                 <div className="writeFormGroup">
                   <textarea
                     placeholder='New Content'
+                    style={{ width: '100%', height: '60vh' }}
                     value={editedContent}
                     type="text"
                     onChange={(e) => setEditedContent(e.target.value)}

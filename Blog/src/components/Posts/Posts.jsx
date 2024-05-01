@@ -27,7 +27,7 @@ const Posts = ({ navigate }) => {
   }, [])
 
   if (postlist.length === 0) {
-    return <Skeleton /> // Muestra el esqueleto mientras se cargan los datos
+    return <Skeleton />
   }
 
   return (

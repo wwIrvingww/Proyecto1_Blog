@@ -2,11 +2,20 @@
     margin-bottom: 20px;
   }
   
-  .skeleton-post-title {
+.single {
+    display: flex;
+  }
+  
+.skeleton-wrapper {
+    width: 70%;
+    margin-right: 30px;
+  }
+
+.skeleton-post-title {
     font-size: 24px;
     font-weight: 600;
     margin-bottom: 10px;
-  }
+}
   
   .title-skeleton {
     display: inline-block;

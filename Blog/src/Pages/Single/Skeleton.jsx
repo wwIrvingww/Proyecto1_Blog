@@ -21,7 +21,7 @@ const Skeleton = () => {
           </div>
           <div className="singlePostImg">
             <img
-              src="data:image/png;base64,iVBORw0KGg...." // Replace this with a base64 encoded skeleton image
+              src="data:image/png;base64,iVBORw0KGg...."
               alt=""
               className="singlePostImage"
             />
@@ -43,7 +43,7 @@ const Skeleton = () => {
           <div className="singlePostAuthor">
             <div className="singlePostAuthorInfo">
               <img
-                src="data:image/png;base64,iVBORw0KGg...." // Replace this with a base64 encoded skeleton image
+                src="data:image/png;base64,iVBORw0KGg...."
                 alt=""
                 className="singlePostAuthorImg"
               />
