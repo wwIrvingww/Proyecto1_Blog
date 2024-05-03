@@ -30,9 +30,9 @@ export default function Sidebar () {
           <div className="sidebarItem">
           <span className="sidebarTitle">Follow me</span>
           <div className="sidebarSocial">
-            <i className="sidebarIcon fa-brands fa-instagram"></i>
-            <i className="sidebarIcon fa-brands fa-x-twitter"></i>
-            <i className="sidebarIcon fa-brands fa-github"></i>
+              <a href='https://www.instagram.com/evil_irving/?igsh=MXFkcWxlajQ1bWk3eA%3D%3D' target='_blank' className='topIcon fa-brands fa-instagram' rel="noreferrer"></a>
+              <a href='https://twitter.com/irvingkiaro' target='_blank' className='topIcon fa-brands fa-x-twitter' rel="noreferrer"></a>
+              <a href='https://github.com/wwIrvingww' target='_blank' className='topIcon fa-brands fa-github' rel="noreferrer"></a>
           </div>
           </div>
         </div>
