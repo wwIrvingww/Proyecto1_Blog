@@ -53,14 +53,21 @@ export default function SinglePost ({ postId }) {
   }
 
   const editPost = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
+      let imageData = editedImage64; // Guarda la URL actual por defecto
+  
+      // Si el campo de la imagen está vacío, mantén la URL actual
+      if (!editedImage64) {
+        imageData = post[0].image64;
+      }
+  
       console.log('Data to send:', {
         title: editedTitle,
         content: editedContent,
-        image64: editedImage64
-      })
-
+        image64: imageData // Utiliza la URL actual si el campo está vacío
+      });
+  
       const response = await fetch(`https://api-postgres.onrender.com/blogs/${postId}`, {
         method: 'PUT',
         headers: {
@@ -69,19 +76,20 @@ export default function SinglePost ({ postId }) {
         body: JSON.stringify({
           title: editedTitle,
           content: editedContent,
-          image64: editedImage64
+          image64: imageData // Utiliza la URL actual si el campo está vacío
         })
-      })
-
-      const updatedPostData = await response.json()
-      console.log('Updated Post Data:', updatedPostData)
-      setPost(updatedPostData)
-      setIsEditing(false)
-      window.location.reload()
+      });
+  
+      const updatedPostData = await response.json();
+      console.log('Updated Post Data:', updatedPostData);
+      setPost(updatedPostData);
+      setIsEditing(false);
+      window.location.reload();
     } catch (error) {
-      console.error('Error updating post:', error)
+      console.error('Error updating post:', error);
     }
-  }
+  };
+  
 
   if (isLoading) {
     return (
@@ -132,7 +140,7 @@ export default function SinglePost ({ postId }) {
                     type="text"
                     style={{ width: '100%', height: '5vh' }}
                     onChange={(e) => setEditedImage64(e.target.value)}
-                    className="writeText">
+                    className="writeInput writeText">
                   </textarea>
                 </div>
                 <button type="submit" className="writeSubmit">

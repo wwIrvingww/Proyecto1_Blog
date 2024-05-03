@@ -44,7 +44,7 @@ export default function TopBar ({ onRouteChange }) {
         </ul>
       </div>
       <div className='topRight'>
-        <img className='topImg' src='https://i.pinimg.com/564x/47/4b/8a/474b8a199086b29ae636a06fd3ecbf6d.jpg' alt='' />
+        <img className='topImg' src='https://i.pinimg.com/736x/b7/c3/0a/b7c30a6a3d32ac6e4c38791b20780822.jpg' alt='' />
         <i className='topSearchIcon fa-solid fa-magnifying-glass'></i>
       </div>
     </div>
