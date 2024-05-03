@@ -5,7 +5,7 @@
 .singlePostWrapper{
     padding: 20px;
     padding-right: 0;
-    width: 70vw; /* Agregamos un ancho fijo */
+    width: 70vw;
 }
 
 .singlePostImg{

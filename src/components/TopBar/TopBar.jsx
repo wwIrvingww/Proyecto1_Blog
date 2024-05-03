@@ -14,7 +14,7 @@ export default function TopBar ({ onRouteChange }) {
   }
 
   if (!isLoggedin) {
-    return 
+    return
   }
 
   return (
