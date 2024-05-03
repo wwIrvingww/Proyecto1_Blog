@@ -1,56 +1,40 @@
-# Proyecto1_Blog
+# Proyecto1 Blog
 
-Welcome to the repository for Proyecto1_Blog, a comprehensive blogging platform that supports all aspects of blog management through a simple and effective CRUD interface.
+## Description of the Project
 
-Proyecto1_Blog allows users to manage a personal or community blog with full CRUD capabilities:
-- **Create** posts to share new content.
-- **Read** existing posts to engage with content.
-- **Update** posts to make corrections or updates.
-- **Delete** posts that are no longer relevant.
+Proyecto1 Blog is a modern, dynamic blog platform designed to provide users with a seamless experience in publishing and managing content online. The platform focuses on ease of use without compromising on the aesthetics and functionality of modern web applications.
 
-This system is designed to be intuitive and user-friendly, suitable for both novice bloggers and experienced web developers.
+## Technologies Used and Why
 
-This project simplifies the process of blog management while providing a robust and scalable platform. It can serve as a learning tool for developers interested in web development and CRUD operations or as a starting point for a more complex blog or content management system.
+This project uses several key technologies:
 
-### Prerequisites
+- **Vite**: Chosen for its fast build times and out-of-the-box support for features like hot module replacement, which enhance the development experience.
+- **Netlify**: Used for its straightforward deployment processes and excellent support for front-end projects, making it easy to go from development to production.
+- **Node.js and npm**: These provide the runtime environment and package management needed to handle dependencies and run the project.
 
-- Node.js
-- npm (Node Package Manager)
-- [Additional necessary software like Python, a database, etc.]
+## Instructions to Run the Project Locally
 
-### Installation Steps
+To get the project running on your local machine, follow these steps:
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/wwIrvingww/Proyecto1_Blog.git
-   cd Proyecto1_Blog```
+1. Ensure you have Node.js and npm installed. You can download them from https://nodejs.org/.
+2. Clone the repository to your local machine using: ```git clone https://github.com/wwIrvingww/Proyecto1_Blog.git```
+3. Navigate into the project directory: ```cd Proyecto1_Blog```
+4. Install the necessary packages: ```npm install```
+5. Start the development server: ```npm run dev```
 
-2. **Install dependencies:**
-   ```npm install```
+This command will start the local server and open the blog in your default web browser.
 
-3. **Configure the environment variables:**
-   ```Create a .env file in the root directory.
-    Add the necessary configurations (in this case you have to used PostgreSQL)```
+Now, the project is set up and running locally. You can start exploring the blog and make changes as needed.
 
-4. **Initialize the database:**
-   ```npm run db:init```
+## Admin credentials
+-username: Irving
+-password: password
 
-5. **Initialize the database:**
-   ```npm start```
-
-### ### Installation Steps
-Open a web browser and navigate to http://localhost:3000 to start managing your blog.
-
-Should you encounter any issues or have questions regarding the project, you can:
-
-- Check the Issues tab on this GitHub repository to find solutions or post new issues.
-
-- Contact the project maintainer at mor22781@uvg.edu.gt.
+## Not Admin credentials
+-username: Jose
+-password: 123
 
 
-This project is maintained by:
-
-Irving Fabricio Morales Acosta
 
 
-Feel free to adjust any of the placeholder text or sections to better fit your project's specifics!
+
