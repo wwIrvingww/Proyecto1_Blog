@@ -20,7 +20,7 @@ export default function TopBar ({ onRouteChange }) {
   return (
     <div className='top'>
       <div className='topLeft'>
-        <a href='https://www.instagram.com/evil_irving/?igsh=MXFkcWxlajQ1bWk3eA%3D%3D' target='_blank' className='topIcon fa-brands fa-instagram' rel="noreferrer"></a>
+        <a href='https://www.instagram.com' target='_blank' className='topIcon fa-brands fa-instagram' rel="noreferrer"></a>
         <a href='https://twitter.com/irvingkiaro' target='_blank' className='topIcon fa-brands fa-x-twitter' rel="noreferrer"></a>
         <a href='https://github.com/wwIrvingww' target='_blank' className='topIcon fa-brands fa-github' rel="noreferrer"></a>
       </div>
