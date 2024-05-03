@@ -28,11 +28,11 @@ export default function Sidebar () {
           </ul>
           </div>
           <div className="sidebarItem">
-          <span className="sidebarTitle">Follow me</span>
+          <span className="sidebarTitle">I usually use</span>
           <div className="sidebarSocial">
-              <a href='https://www.instagram.com/evil_irving/?igsh=MXFkcWxlajQ1bWk3eA%3D%3D' target='_blank' className='topIcon fa-brands fa-instagram' rel="noreferrer"></a>
-              <a href='https://twitter.com/irvingkiaro' target='_blank' className='topIcon fa-brands fa-x-twitter' rel="noreferrer"></a>
-              <a href='https://github.com/wwIrvingww' target='_blank' className='topIcon fa-brands fa-github' rel="noreferrer"></a>
+            <i className="sidebarIcon fa-brands fa-instagram"></i>
+            <i className="sidebarIcon fa-brands fa-x-twitter"></i>
+            <i className="sidebarIcon fa-brands fa-github"></i>
           </div>
           </div>
         </div>
